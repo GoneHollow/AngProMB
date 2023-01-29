@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do-Do List</title>
+</head>
+<body>
+
+    <h1>Todo List</h1>
+    <input type="text" name="" id="todoInput" value="Enter List Item" onfocus="this.value=''">
+    <button onclick="createListItem()">Add</button>
+
+    <ul id="myList">
+    </ul>
+
+
+    <script>
+        const myList = document.getElementById("myList");
+        const input = document.getElementById("todoInput");
+
+        function createListItem()
+        {
+            const li = document.createElement("li");
+            li.innerHTML = input.value + "<button onclick='myList.removeChild()' style='border-radius: 50%; background-color:red'>X</button>";
+            myList.appendChild(li);
+            document.getElementById("todoInput").value = "";
+        }
+
+        
+
+
+
+    </script>
+</body>
+</html>
+
+<!-- 
+    '
+-->
