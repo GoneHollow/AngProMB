@@ -24,6 +24,7 @@
         border: 1px solid grey;
         box-sizing: border-box;
         grid-area: display;
+        font-size: 2.5rem;
       }
 
       #numbers {
@@ -67,24 +68,38 @@
     <div id="calculator">
       <div id="display"></div>
       <div id="numbers">
-        <button>9</button>
-        <button>8</button>
-        <button>7</button>
-        <button>6</button>
-        <button>5</button>
-        <button>4</button>
-        <button>3</button>
-        <button>2</button>
-        <button>1</button>
-        <button>0</button>
+        <button onclick="displayValue('9')">9</button>
+        <button onclick="displayValue('8')">8</button>
+        <button onclick="displayValue('7')">7</button>
+        <button onclick="displayValue('6')">6</button>
+        <button onclick="displayValue('5')">5</button>
+        <button onclick="displayValue('4')">4</button>
+        <button onclick="displayValue('3')">3</button>
+        <button onclick="displayValue('2')">2</button>
+        <button onclick="displayValue('1')">1</button>
+        <button onclick="displayValue('0')">0</button>
       </div>
       <div id="operators">
-        <button id="plus">+</button><button id="">-</button><button>*</button><button>/</button
-        ><button>=</button>
+        <button onclick="displayValue('+')">+</button>
+        <button onclick="displayValue('-')">-</button>
+        <button onclick="displayValue('*')">*</button>
+        <button onclick="displayValue('/')">/</button>
+        <button onclick="calculate()">=</button>
       </div>
     </div>
 
     <script>
+      const display = document.getElementById("display");
+      
+      function displayValue(value)
+      {
+        display.innerText = display.innerText + value;
+      }
+
+      function calculate()
+      {
+        console.log("foo");
+      }
 
     </script>
   </body>
