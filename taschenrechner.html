@@ -98,7 +98,59 @@
 
       function calculate()
       {
-        console.log("foo");
+        let calc = display.innerText;
+        const calcArray = calc.split("");
+        calcArray.forEach((element, index, array) => {
+          if(element === "*" || element === "/")
+          {
+            if (element === "*")
+            {
+              multOrDiv(element, index, array, "multiply");
+            } else if (element === "/")
+            {
+              multOrDiv(element, index, array, "divide");
+            } else {console.log("if *|/ error");}
+            //do math
+          }
+        });
+
+        function multOrDiv(element, index, array, operator)
+        {
+          let i = index;
+            let j = 0;
+            let leftNum = 0;
+
+            //check left elements
+            while(parseInt(array[i]) !== "NaN" && i > 0)
+            {
+              i = i - 1;
+              leftNum = leftNum + array[i] * 10 ** j;
+              j++;
+            }
+
+            //check right elements
+            let rightNum = "";
+            let a = index;
+
+            while(parseInt(array[a]) !== "NaN" && a < array.length - 1)
+            {
+              a = a + 1;
+              rightNum = rightNum + array[a];
+            }
+
+            switch (operator) 
+            {
+              case "multiply":
+                console.log(leftNum * parseInt(rightNum));
+                break;
+              case "divide":
+                console.log(leftNum / parseInt(rightNum));
+                break;
+              default:
+                console.log("switch calculator error");
+                break;
+            }
+        }
       }
 
     </script>
