@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="mystyle.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game ADT</title>
+</head>
+<body>
+    <h1 id="header">Das ADT Memory Game</h1>
+    <div class="btn">
+    <input type="button" id="btn1" value="Start Game" onclick="startGame(), value='Neustart', style='transform: translateY(300px) translateX(650px);'"></button>
+    </div>
+    <br>
+
+    <table id="tab" style="display: none;">
+        <tr></tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        <tr></tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        <tr></tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        <tr></tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        
+    </table>
+
+    <script>
+        function startGame()
+        {
+            document.getElementById("header").remove();
+            document.getElementById("tab").style.display = "";
+            document.getElementById("tab").style.transform = "translateY(-115px)";
+        }
+
+
+
+
+    </script>
+</body>
+</html>
