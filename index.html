@@ -16,38 +16,61 @@
 
     <table id="tab" style="display: none;">
         <tr></tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         <tr></tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         <tr></tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         <tr></tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         
     </table>
 
     <script>
         function startGame()
         {
+            //Make Table appear on Start
+
             document.getElementById("header").remove();
             document.getElementById("tab").style.display = "";
             document.getElementById("tab").style.transform = "translateY(-115px)";
+
+            //Fill Array with numbers 1-8 and randomize their position on Game Start
+
+            const memArray = [1, 2, 3, 4, 5, 6, 7, 8];
+
+            shuffle(memArray);
+
+            
+            for (i = 0; i < memArray.length; i++){
+            console.log(memArray[i]);
+            }
         }
 
-
-
+        // Fisher-Yates Shuffle Algorithm
+        function shuffle(a) {
+            var j, x, i;
+            for (i = a.length - 1; i > 0; i--)
+            {
+                j = Math.floor(Math.random() * (i + 1));
+                x = a[i];
+                a[i] = a[j];
+                a[j] = x;
+            }
+            return a;
+        }
 
     </script>
 </body>

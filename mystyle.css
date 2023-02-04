@@ -1,4 +1,4 @@
-/*GENERELLES*/
+/*GENERAL*/
 
 h1 {
     text-align: center;
@@ -29,7 +29,7 @@ input:active {
     transform: translateY(4px);
 }
 
-/*TABELLE*/
+/*TABLE*/
 
 #tab {
     margin-left: auto;
