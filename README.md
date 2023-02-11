@@ -7,8 +7,8 @@
 
 ## Content
 * README
-* ToDo List
 
 ### Memory Game
 * index.html
 * mystyle.css
+* script.js
