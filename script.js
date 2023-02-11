@@ -34,10 +34,12 @@ console.log(catPics);
 
 function setRandomImages() 
 {
+    shuffle(catPics);
     const fragment = document.createDocumentFragment();
     for (i = 0; i < 16; i++)
     {
         const div = document.createElement("div");
+        div.id = "column";
         const img = document.createElement("img");
         fragment.appendChild(div);
         img.src = catPics[i].url;
@@ -47,8 +49,11 @@ function setRandomImages()
     board.appendChild(fragment);
 }
 
-  setTimeout(() => {  setRandomImages(); }, 3000);
-function shuffle(a) {
+
+  startButton.addEventListener("click", setRandomImages)
+
+function shuffle(a) 
+{
     var j, x, i;
     for (i = a.length - 1; i > 0; i--)
     {
