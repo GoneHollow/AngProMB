@@ -6,9 +6,12 @@ const startButton = document.getElementById("startButton");
 const headline = document.getElementById("headline");
 const div = document.getElementsByTagName("div");
 const solvedElems = document.getElementsByClassName("solved");
-
-let score = document.getElementById("score");
+let score = 0;
+const X = 10;
+const scoreElem = document.getElementById("score");
 const elem = document.getElementsByClassName("element");
+const victory = document.getElementById("finalscore");
+const vicScreen = document.getElementById("vicscreen");
 console.log(catPics);
 
 startButton.addEventListener("click", setRandomImages);
@@ -44,11 +47,16 @@ async function getImages()
 async function setRandomImages() 
 {
     await getImages();
-    startButton.style.transform = "translateX(-650px) translateY(10px)";
+    score = 0;
+    scoreElem.innerText = `Score: ${score}`;
+    startButton.style.transform = "translateX(-700px) translateY(10px)";
     startButton.style.display = "inline-block";
     headline.style.display = "none";
     board.style.display = "";
     startButton.value = "Restart";
+    scoreElem.style.display = "block";
+    vicScreen.style.display = "none";
+
     
     shuffle(catPics);
 
@@ -90,8 +98,6 @@ function flipCards(event)
     event.target.classList.add("active");
   }
 
-  console.log(activeElements.length);
-
   if(activeElements.length == 2)
   {
     if(activeElements[0].id == activeElements[1].id)
@@ -106,7 +112,7 @@ function flipCards(event)
       activeElements[1].classList.remove("active");
       activeElements[0].classList.remove("active");
 
-      score.innerText = parseInt(score.innerText) + 100;
+      score += X;
 
       console.log(solvedElems);
     } else
@@ -114,12 +120,20 @@ function flipCards(event)
       setTimeout(function(){
         activeElements[1].classList.remove("active");
         activeElements[0].classList.remove("active");
-      },2000)
+      },3000)
 
-
+      
+      score = Math.max(score - X/2, 0);
+      
 
       
     }
+    scoreElem.innerText = `Score: ${score}`;
   }
 
+  if(solvedElems.length == 16)
+  {
+    victory.innerText = score;
+    vicScreen.style.display = "flex";
+  }
 }
