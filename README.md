@@ -1,10 +1,14 @@
-# AngProMB
-### Autor: Max Bauer
-### erstellt: 29.01.2023
-### letzte Änderung: 30.01.2023
+# AngProMB 
+### Author: Max Bauer
+### created: 29.01.2023
+### last changed: 04.02.2023
 
 ---
 
-## Inhalt
+## Content
 * README
-* ToDo List
+
+### Memory Game
+* index.html
+* mystyle.css
+* script.js
