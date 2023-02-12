@@ -1,3 +1,54 @@
+h1
+{
+    text-align: center;
+}
+
+.score
+{
+    font-size: large;
+    margin: auto;
+    margin-right: 0;
+    display: inline-block;
+}
+
+
+/*BUTTON*/
+
+#btn
+{
+    text-align: center;
+    position: relative;
+    z-index: 999;
+}
+
+input
+{
+    text-align: center;
+    transition: .3s ease;
+    padding: 10px 20px;
+    border-radius: 12px;
+    background-color: #4CAF50;
+    cursor: pointer;
+    font-size: 60px;
+    font-family: Garamond;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+input:hover
+{
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #4CAF50;
+}
+
+input:active
+{
+    transform: translateY(5px);
+}
+
+/*MEMORY BOARD*/
+
 #board
 {
     display: grid;
@@ -7,24 +58,27 @@
     column-gap: 50px;
     padding-left: 400px;
     padding-right: 500px;
-    transform: translateY(-50px);
+    transform: translateY(-100px);
+    position: relative;
+    z-index: 99;
 }
 
-#column
+.column
 {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/*IMAGES*/
+
 img 
 {
-    width: 150px;
-    height: 150px;
     border-radius: 8px;
+    transform: rotateY(180deg);
 }
 
-img:hover
+/*img:hover
 {
     transition: .5s ease;
     opacity: 0.9;
@@ -39,4 +93,36 @@ img:active
     opacity: 0.7;
     transform: translateY(5px);
     box-shadow: 5px 5px 5px black;
+}*/
+
+.element
+{
+    width: 150px;
+    height: 150px;
+    position: relative;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.element.active, .element.solved
+{
+    transform: rotateY(180deg);
+}
+
+.element::before
+{
+    content: "";
+    background-color: orange;
+    position: absolute;
+
+}
+
+img, .element::before
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
 }
