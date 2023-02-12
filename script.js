@@ -1,21 +1,26 @@
-//Lade Bilder in ein Array
 
+//Empty Array to be filled
 const catPics = [];
+
+//Get Elements from memory.html
 const board = document.getElementById("board");
 const startButton = document.getElementById("startButton");
 const headline = document.getElementById("headline");
 const div = document.getElementsByTagName("div");
 const solvedElems = document.getElementsByClassName("solved");
-let score = 0;
-const X = 10;
 const scoreElem = document.getElementById("score");
 const elem = document.getElementsByClassName("element");
 const victory = document.getElementById("finalscore");
 const vicScreen = document.getElementById("vicscreen");
-console.log(catPics);
 
+//Score + "X" from assignment
+let score = 0;
+const X = 10;
+
+//Start/reset game
 startButton.addEventListener("click", setRandomImages);
 
+//Fill array with random cat pics from CatAPI; shuffle array
 async function getImages() 
 {
     let response = await fetch(
@@ -43,10 +48,17 @@ async function getImages()
 }
 
 
-
+//Game initializer; async since has to wait for getImages()
 async function setRandomImages() 
 {
-    await getImages();
+    //clears array on restart
+    if(catPics.length > 15)
+    {
+      catPics.length = 0;
+      await getImages();
+    } else {await getImages();}
+    
+    //set score to 0 and initialize board on (re-)start
     score = 0;
     scoreElem.innerText = `Score: ${score}`;
     startButton.style.transform = "translateX(-700px) translateY(10px)";
@@ -60,6 +72,7 @@ async function setRandomImages()
     
     shuffle(catPics);
 
+    //create div parent nodes with img children
     const fragment = document.createDocumentFragment();
     for (i = 0; i < 16; i++)
     {
@@ -74,8 +87,10 @@ async function setRandomImages()
     }
     board.innerHTML = "";
     board.appendChild(fragment);
+    console.log(catPics);
 }
 
+//Fisher-Yates Algorithm
 function shuffle(a) 
 {
     var j, x, i;
@@ -93,6 +108,7 @@ function flipCards(event)
 {
   const activeElements = document.getElementsByClassName("active");
 
+  //allow 2 active selected elements at a time
   if(activeElements.length < 2)
   {
     event.target.classList.add("active");
@@ -102,6 +118,8 @@ function flipCards(event)
   {
     if(activeElements[0].id == activeElements[1].id)
     {
+      //reassign class name to cleared cards, disable eventListener
+
       activeElements[0].classList.add("solved");
       activeElements[1].classList.add("solved");
 
@@ -113,8 +131,6 @@ function flipCards(event)
       activeElements[0].classList.remove("active");
 
       score += X;
-
-      console.log(solvedElems);
     } else
     {
       setTimeout(function(){
@@ -122,7 +138,7 @@ function flipCards(event)
         activeElements[0].classList.remove("active");
       },3000)
 
-      
+      //if score value is below 0, replace with 0 (Math.max -> return higher number)
       score = Math.max(score - X/2, 0);
       
 

@@ -1,12 +1,18 @@
+body
+{
+    background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+}
+
 h1
 {
     text-align: center;
+    font-size: 80px;
 }
 
 #score
 {
     position: absolute;
-    font-size: large;
+    font-size: 60px;
     transform: translateX(450px);
     top: 60px;
     left: 50%;
@@ -35,7 +41,7 @@ input
     background-color: #4CAF50;
     cursor: pointer;
     font-size: 60px;
-    font-family: Garamond;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-variant: small-caps;
 }
@@ -96,12 +102,16 @@ img
     transform: rotateY(180deg);
 }
 
+/*PSEUDO ELEMENT AS BACKFACE*/
+
 .element::before
 {
     content: "";
-    background-color: orange;
+    background-color: rgb(161, 247, 227);
     position: absolute;
-
+    background-image: url(adt_logo_noBG.png);
+    background-position: center;
+    background-size: 100%;
 }
 
 img, .element::before
@@ -113,17 +123,32 @@ img, .element::before
     border-radius: 8px;
 }
 
+/*ENDGAME SCREEN*/
+
 #vicscreen
 {
     display: none;
-    width: 400px;
+    width: 600px;
     height: 400px;
-    background-color: aquamarine;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(18,121,9,1) 0%, rgba(0,212,255,1) 100%);
     position: absolute;
     left: 50%;
-    transform: translateX(-200px);
+    transform: translateX(-300px);
     align-items: center;
     justify-content: center;
     top: 170px;
     z-index: 100;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    animation-name: victoryScreen;
+    animation-duration: 2s;
+}
+
+@keyframes victoryScreen
+{
+    0% { opacity: 0;}
+    100% { opacity: 1;}
 }
